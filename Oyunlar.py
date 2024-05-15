@@ -1,10 +1,8 @@
 import pygame
 import random
 
-# Kullanıcı verilerini saklamak için listeler
 users = []
 
-# Kullanıcı sınıfı tanımlama
 class User:
     def __init__(self, first_name, last_name, age, email, password):
         self.first_name = first_name
@@ -12,8 +10,6 @@ class User:
         self.age = age
         self.email = email
         self.password = password
-
-# Kullanıcı kayıt fonksiyonu
 def register():
     print("Kullanıcı Kayıt")
     first_name = input("Ad: ")
@@ -22,25 +18,23 @@ def register():
     email = input("E-posta: ")
     password = input("Şifre: ")
     
-    # Yeni kullanıcıyı oluşturma ve listeye ekleme
     new_user = User(first_name, last_name, age, email, password)
     users.append(new_user)
     print("Kayıt başarılı!")
 
-# Kullanıcı giriş fonksiyonu
 def login():
     print("Kullanıcı Girişi")
     email = input("E-posta: ")
     password = input("Şifre: ")
     
     for user in users:
+        # Burayı and ile bağlıyoruz.
         if user.email == email and user.password == password:
             print(f"Hoş geldiniz, {user.first_name}!")
             return True
     print("E-posta veya şifre yanlış!")
     return False
 
-# Sayı tahmin oyunu (3 hak ile)
 def sayi_tahmin_oyunu():
     print("Sayı Tahmin Oyunu")
     secret_number = random.randint(1, 100)
@@ -58,7 +52,6 @@ def sayi_tahmin_oyunu():
         print(f"Kalan hak: {attempts}")
     print(f"Hakkınız bitti! Doğru sayı: {secret_number}")
 
-# Taş-Kağıt-Makas oyunu
 def tas_kagit_makas():
     print("Taş-Kağıt-Makas")
     choices = ["taş", "kağıt", "makas"]
@@ -74,7 +67,6 @@ def tas_kagit_makas():
     else:
         print(f"Kaybettiniz! Bilgisayar {computer_choice} seçti.")
 
-# Kelime tahmin oyunu (Adam Asmaca)
 def kelime_tahmin_oyunu():
     print("Kelime Tahmin Oyunu (Adam Asmaca)")
     words = ["python", "programlama", "geliştirici", "bilgisayar", "veritabanı"]
@@ -103,11 +95,9 @@ def kelime_tahmin_oyunu():
     else:
         print(f"Kaybettiniz! Kelime: {secret_word}")
 
-# Yılan oyunu
 def yilan_oyunu():
     pygame.init()
 
-    # Renk tanımlamaları
     white = (255, 255, 255)
     yellow = (255, 255, 102)
     black = (0, 0, 0)
@@ -115,11 +105,9 @@ def yilan_oyunu():
     green = (0, 255, 0)
     blue = (50, 153, 213)
 
-    # Oyun ekranı boyutları
     dis_width = 800
     dis_height = 600
 
-    # Yılan ve yemek boyutları
     snake_block = 10
     snake_speed = 15
 
@@ -139,7 +127,7 @@ def yilan_oyunu():
         mesg = font_style.render(msg, True, color)
         dis.blit(mesg, [dis_width / 6, dis_height / 3])
 
-    def gameLoop():  # Oyun ana fonksiyonu
+    def gameLoop(): 
         game_over = False
         game_close = False
 
@@ -219,7 +207,6 @@ def yilan_oyunu():
 
     gameLoop()
 
-# 21 Oyunu (Blackjack)
 def blackjack():
     print("21 Oyunu (Blackjack)")
     def deal_card():
@@ -271,7 +258,6 @@ def blackjack():
     else:
         print("Berabere!")
 
-# Ana menü
 def main_menu():
     while True:
         print("\nAna Menü")
@@ -291,7 +277,6 @@ def main_menu():
         else:
             print("Geçersiz seçim!")
 
-# Oyun menüsü
 def oyun_menu():
     while True:
         print("\nOyun Menüsü")
@@ -318,6 +303,5 @@ def oyun_menu():
         else:
             print("Geçersiz seçim!")
 
-# Programı başlatma
 if __name__ == "__main__":
     main_menu()
